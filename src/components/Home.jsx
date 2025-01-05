@@ -1,6 +1,4 @@
-import React from 'react';
-import Header from './Header';
-
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
@@ -22,9 +20,9 @@ const Home = () => {
           <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center">
             Start Something Epic.
           </h1>
-          <button className="bg-gradient-to-b from-[#ff6036] to-[#d4004f] w-full max-w-xs text-white px-6 py-3 rounded-full text-base sm:text-lg font-semibold hover:opacity-90 transition">
+         <Link to="/signup"   > <button className="bg-gradient-to-b from-[#ff6036] to-[#d4004f] w-full max-w-xs text-white px-6 py-3 rounded-full text-base sm:text-lg font-semibold hover:opacity-90 transition">
             Create Account
-          </button>
+          </button></Link>
           <svg
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 text-white rounded-full p-2 sm:p-4"
             viewBox="0 0 519 123"

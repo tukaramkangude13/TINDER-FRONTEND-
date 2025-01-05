@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Language = ({ ShowMultilanguage, setShowMultilanguage }) => {
   return (

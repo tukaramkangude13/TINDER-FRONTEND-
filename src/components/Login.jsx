@@ -1,30 +1,38 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "./utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { login, profile } from "./utils/userSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [password, setPassword] = React.useState("akshay@123");
-  const [email, setEmail] = React.useState("akshay.saini@example.com");
+  const [password, setPassword] = React.useState("nidhi@123");
+  const [email, setEmail] = React.useState("nidhi.agarwal@example.com");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+const[err,seterr]=useState("");
   const handleLogin = async (e) => {
+    seterr("");
     e.preventDefault();
 
     try {
       const res = await axios.post(
         "http://localhost:7777/login",
         { emailId: email, password },
-        { withCredentials: true } // Send cookies with the request
+        { withCredentials: true }
       );
 
-      console.log(res.data);
-      dispatch(login(res.data));
-      navigate("/profile");
+      console.log(res.data.user);
+      dispatch(login(res.data.user))
+
+      ;
+       dispatch(profile(res.data))
+       console.log(res.data);
+      navigate("/editprofile");
     } catch (err) {
+      seterr(err.response.data.message)
+
       console.error(err.response);
+
     }
   };
 
@@ -40,7 +48,6 @@ const Login = () => {
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black opacity-50"></div>
-
       {/* Login Container */}
       <div className="relative bg-gradient-to-b from-gray-800 to-black bg-opacity-90 p-8 rounded-xl shadow-xl max-w-md w-full z-10">
         <h2 className="text-4xl font-bold mb-6 text-center text-white">
@@ -49,7 +56,11 @@ const Login = () => {
 
         {/* Login Form */}
         <form className="space-y-6" onSubmit={handleLogin}>
+
           <div>
+
+          <p className=" text-red-500 text-sm">{err}</p>
+
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-300"
@@ -93,9 +104,9 @@ const Login = () => {
 
         {/* Social Login */}
         <div className="mt-6">
-          <button className="w-full bg-red-500 text-white py-3 px-4 rounded-full font-semibold hover:bg-red-600 transition">
+       <Link to="/signup"  >     <button className="w-full bg-red-500 text-white py-3 px-4 rounded-full font-semibold hover:bg-red-600 transition">
             Log in with Google
-          </button>
+          </button>  </Link>
         </div>
 
         {/* Terms and Privacy */}

@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Language from "./Language";
 import { BASE_URL } from "./utils/constant";
 import axios from "axios";
 import { logout } from "./utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const [ShowMultilanguage, setShowMultilanguage] = React.useState(false);
   const navigate = useNavigate();
-  const  dispatch  =useDispatch()
-  ;  const data = useSelector((state) => state?.user?.user);
+  const  dispatch  =useDispatch();
+    const data = useSelector((state) => state?.user?.user);
+useEffect(()=>{
 
-  const handleLogout = async () => {
+},[data]);
+    const handleLogout = async () => {
     try {
       const response = await axios.post(BASE_URL + "/logout", {
         withCredentials: true,
       });
-      console.log(response.data);
       dispatch(logout());
       navigate("/login");
     } catch (error) {
@@ -51,9 +52,10 @@ const Header = () => {
         <nav className="hidden md:flex space-x-4">
           <button className="text-white hover:text-[#ff4458] hover:underline">Products</button>
           <button className="text-white hover:text-[#ff4458] hover:underline">Learn</button>
-          <button className="text-white hover:text-[#ff4458] hover:underline">Safety</button>
-          <button className="text-white hover:text-[#ff4458] hover:underline">Support</button>
-          <button className="text-white hover:text-[#ff4458] hover:underline">Download</button>
+     <Link  to="/message"><button className="text-white hover:text-[#ff4458] hover:underline">Messages</button></Link>     
+
+<Link  to="/request" >           <button className="text-white hover:text-[#ff4458] hover:underline">Request</button>
+</Link>        <Link  to="/editprofile"><button className="text-white hover:text-[#ff4458] hover:underline">EditProfile</button></Link>  
         </nav>
       </div>
 
@@ -76,7 +78,6 @@ const Header = () => {
         <button
           onClick={() => {
             navigate("/login");
-            console.log("clicked");
           }}
           className="bg-white text-black px-4 py-2 rounded-full"
         >
@@ -89,11 +90,11 @@ const Header = () => {
           LogOut
         </button>
         {data && (
-          <img
-            src={data?.user?.photoUrl || data.data.photoUrl}
-            className="rounded-full w-8 md:w-10"
+       <Link  to="/connections" >    <img
+            src={data?.user?.photoUrl || data?.photoUrl}
+            className="rounded-full w-8 h-10  md:w-10"
             alt="user image"
-          />
+          /></Link>
         )}
       </div>
     </div>

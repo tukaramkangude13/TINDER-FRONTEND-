@@ -4,7 +4,7 @@ import { Body } from './components/Body.jsx'
 import { Provider } from 'react-redux'
 import appStore from './components/utils/appStore.js'
 createRoot(document.getElementById('root')).render(
-  <StrictMode >
+
   <Provider store={appStore}><Body /></Provider>
-  </StrictMode>,
+  
 )
