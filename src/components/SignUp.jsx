@@ -25,7 +25,7 @@ const SignUp = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:7777/signup", // Your sign-up API endpoint
+        "https://tinder-backend-otty.onrender.com/signup", // Your sign-up API endpoint
         { firstName, lastName, emailId, password, gender },
         { withCredentials: true }
       );

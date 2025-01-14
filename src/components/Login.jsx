@@ -16,7 +16,7 @@ const[err,seterr]=useState("");
 
     try {
       const res = await axios.post(
-        "http://localhost:7777/login",
+        "https://tinder-backend-otty.onrender.com/login",
         { emailId: email, password },
         { withCredentials: true }
       );

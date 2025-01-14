@@ -20,7 +20,7 @@ import { io } from "socket.io-client";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { use } from "react";
 
-const BASE_URL = "http://localhost:7777";
+const BASE_URL = "https://tinder-backend-otty.onrender.com";
 const socket = io(BASE_URL);
 
 const Messages = () => {
