@@ -4,6 +4,7 @@ import { BASE_URL } from "./utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { profile } from "./utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { combineSlices } from "@reduxjs/toolkit";
 
 const EditProfile = () => {
   const info = useSelector((state) => state?.user?.profile);
@@ -23,13 +24,14 @@ const EditProfile = () => {
       const response = await axios.get(`${BASE_URL}/profile`, {
         withCredentials: true,
       });
+      console.log(response.data);
       dispatch(profile(response.data));
       setFirstName(response.data.firstName || "");
       setLastName(response.data.lastName || "");
       setPhotoUrl(response.data.photoUrl || "");
       setAge(response.data.age || "");
       setGender(response.data.gender || "");
-      setAbout(response.data.skills || "");
+      setAbout(response.data.about || "");
     } catch (error) {
       navigate("/login");
       console.error("Error fetching user data:", error);
@@ -110,7 +112,6 @@ const EditProfile = () => {
               value={photoUrl}
               onChange={(e) => setPhotoUrl(e.target.value)}
               className="mt-1 block w-full px-3 py-2 border border-gray-500 bg-gray-800 text-white rounded-md shadow-sm focus:ring-yellow-500"
-              required
             />
           </div>
           <div>

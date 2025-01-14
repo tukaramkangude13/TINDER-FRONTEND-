@@ -45,7 +45,7 @@ console.log(requests);
             className="w-full sm:w-96 bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col items-center"
           >
             <img
-              src={request.fromUserId.photoUrl}
+              src={request.fromUserId.photoUrl||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s"}
               alt={`${request.fromUserId.firstName} ${request.fromUserId.lastName}`}
               className="w-24 h-24 rounded-full"
             />
