@@ -20,7 +20,7 @@ const Home = () => {
           <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-center">
             Start Something Epic.
           </h1>
-         <Link to="/signup"   > <button className="bg-gradient-to-b from-[#ff6036] to-[#d4004f] w-full max-w-xs text-white px-6 py-3 rounded-full text-base sm:text-lg font-semibold hover:opacity-90 transition">
+         <Link to="/signup"   > <button className="bg-gradient-to-b    l   from-[#ff6036] to-[#d4004f] w-full max-w-xs text-white px-6 py-3 rounded-full text-base sm:text-lg font-semibold hover:opacity-90 transition">
             Create Account
           </button></Link>
           <svg
