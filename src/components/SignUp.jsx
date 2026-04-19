@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "./utils/constant";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -24,8 +25,8 @@ const SignUp = () => {
     }
 
     try {
-      const res = await axios.post(
-        "https://tinder-backend-otty.onrender.com/signup", // Your sign-up API endpoint
+      const res = await axios.post(BASE_URL+
+        "/signup", // Your sign-up API endpoint
         { firstName, lastName, emailId, password, gender },
         { withCredentials: true }
       );

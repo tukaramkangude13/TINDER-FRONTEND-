@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login, profile } from "./utils/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-
+import { BASE_URL } from "./utils/constant";
+// import { BASE_URL } from "./utils/constant";
 const Login = () => {
   const [password, setPassword] = React.useState("nidhi@123");
   const [email, setEmail] = React.useState("nidhi.agarwal@example.com");
@@ -15,8 +16,8 @@ const[err,seterr]=useState("");
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "https://tinder-backend-otty.onrender.com/login",
+      const res = await axios.post(BASE_URL+
+        "/login",
         { emailId: email, password },
         { withCredentials: true }
       );
